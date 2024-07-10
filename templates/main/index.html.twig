@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <!-- Header-->
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">
+<img src="logo/logo.svg" alt="logo trocasio" height="121" width="491" />
+            </h1>
+            <p class="lead">
+Recyclage en circuit court de calculatrices au <a class="link-light" href="https://lyceedupuydelomebrest.fr/">lycée Dupuy-de-Lôme (Brest)</a>
+            </p>
+            <a class="btn btn-lg btn-light" href="#">Calculatrices disponibles</a>
+        </div>
+    </header>
+    <!-- About section-->
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Troc'asio: le projet</h2>
+                    <p class="lead">
+Le projet Troc'asio a pour objectif de faciliter l'accès à une calculatrice graphique aux lycéen.ne.s du LPO Dupuy de Lôme (filières professionnelle et générale/technologique). Les calculatrices d'occasion sont vendues au prix unique et imbattable de 20€; de plus Troc'asio garantit le rachat au même prix à l'issue de la Terminale, à condition bien sûr que la calculatrice (graphique) soit toujours fonctionnelle; dans ce cas les 20€ peuvent être considérés comme une caution. Il est aussi possible de vendre à Troc'asio une calculatrice graphique achetée ailleurs, de préférence de la marque Casio: 20€ est alors un prix honorable sur le marché de l'occasion, surtout s'agissant d'anciens modèles.
+                    </p>
+                    <h4>Troc'asio: le site</h4>
+                    <p class="lead">
+Le site Troc'asio facilite la gestion du stock de calculatrices, idéalement par les élèves eux-mêmes via la MDL (Maison des Lycéens): le projet relève en effet de l'Économie Sociale et Solidaire (<a class="link-dark" href="https://lesper.fr/mon-ess-a-lecole/">ESS</a>) et participe de l'Éducation au Développement Durable (<a class="link-dark" href="https://eduscol.education.fr/1117/education-au-developpement-durable#summary-item-1">EDD</a>). Quoiqu'il en soit, il est prévu de développer les fonctionnalités suivantes afin de simplifier, mutualiser et sécuriser la gestion actuelle par tableur:
+                    </p>
+                    <ul class="list-group">
+                        <li class="list-group-item">Liste des calculatrices disponibles</li>
+                        <li class="list-group-item">Saisie des entrées/sorties</li>
+                        <li class="list-group-item">Solde de la cagnotte</li>
+                        <li class="list-group-item">Cahier de maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
