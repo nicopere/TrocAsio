@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance: ajout{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <div class="w-50 m-auto">
+        <h1>Maintenance: ajout</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.date, {label: 'Date'}) }}
+        {{ form_row(form.action, {label: 'Opération'}) }}
+        {{ form_row(form.calculator, {label: 'Calculatrice'}) }}
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+</section>
+{% endblock %}

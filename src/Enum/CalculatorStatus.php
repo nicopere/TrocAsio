@@ -12,7 +12,7 @@ enum CalculatorStatus: string
     {
         return match ($this) {
             self::In => 'Disponible',
-            self::Out => 'Indisponible',
+            self::Out => 'Vendue',
             self::Removed => 'Retirée',
         };
     }

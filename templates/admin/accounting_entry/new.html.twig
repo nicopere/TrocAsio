@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle transaction{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <div class="w-50 m-auto">
+        <h1>Nouvelle transaction</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.date, {label: 'Date'}) }}
+        {{ form_row(form.amount, {label: 'Montant'}) }}
+        {{ form_row(form.calculator, {label: 'Calculatrice'}) }}
+        {{ form_row(form.receiptNumber, {label: 'Numéro de reçu'}) }}
+        {{ form_row(form.name, {label: 'NOM Prénom'}) }}
+        {{ form_row(form.furtherInformation, {label: 'Information complémentaire'}) }}
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+</section>
+{% endblock %}

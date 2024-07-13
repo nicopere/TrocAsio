@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-//use App\Enum\CalculatorStatus;
+use App\Enum\CalculatorStatus;
 use App\Repository\CalculatorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
