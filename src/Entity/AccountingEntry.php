@@ -23,7 +23,7 @@ class AccountingEntry
     #[ORM\ManyToOne(inversedBy: 'accountingEntries')]
     private ?Calculator $calculator = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $receiptNumber = null;
 
     #[ORM\Column(length: 255)]
