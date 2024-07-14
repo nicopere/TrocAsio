@@ -1,5 +1,10 @@
 import './bootstrap.js';
-//import './js/scripts.js'; // => error (not in the original template): bootstrap is not defined
+
+// https://stackoverflow.com/questions/64113404/bootstrap-5-referenceerror-bootstrap-is-not-defined
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;
+
+import './js/scripts.js'; // => error (not in the original template): bootstrap is not defined
 /*
  * Welcome to your app's main JavaScript file!
  *

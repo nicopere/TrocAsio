@@ -2,8 +2,13 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block body %}
-    <!-- Header-->
+{% block local_anchors %}
+    <li class="nav-item"><a class="nav-link" href="#projet">Projet</a></li>
+    <li class="nav-item"><a class="nav-link" href="#site">Site</a></li>
+{% endblock %}
+
+{% block body %} 
+    <!-- Header https://startbootstrap.com/template/scrolling-nav-->
     <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
             <h1 class="fw-bolder">
@@ -12,11 +17,12 @@
             <p class="lead">
 Recyclage en circuit court de calculatrices au <a class="link-light" href="https://lyceedupuydelomebrest.fr/">lycée Dupuy-de-Lôme (Brest)</a>
             </p>
-            <a class="btn btn-lg btn-light" href="#">Calculatrices disponibles</a>
+            <a class="btn btn-lg btn-light"
+                href="{{path('app_admin_calculator_index')}}">Calculatrices disponibles</a>
         </div>
     </header>
-    <!-- About section-->
-    <section id="about">
+    <!-- Project section https://startbootstrap.com/template/scrolling-nav-->
+    <section id="projet">
         <div class="container px-4">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-8">
@@ -24,7 +30,16 @@ Recyclage en circuit court de calculatrices au <a class="link-light" href="https
                     <p class="lead">
 Le projet Troc'asio a pour objectif de faciliter l'accès à une calculatrice graphique aux lycéen.ne.s du LPO Dupuy de Lôme (filières professionnelle et générale/technologique). Les calculatrices d'occasion sont vendues au prix unique et imbattable de 20€; de plus Troc'asio garantit le rachat au même prix à l'issue de la Terminale, à condition bien sûr que la calculatrice (graphique) soit toujours fonctionnelle; dans ce cas les 20€ peuvent être considérés comme une caution. Il est aussi possible de vendre à Troc'asio une calculatrice graphique achetée ailleurs, de préférence de la marque Casio: 20€ est alors un prix honorable sur le marché de l'occasion, surtout s'agissant d'anciens modèles.
                     </p>
-                    <h4>Troc'asio: le site</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Site section https://startbootstrap.com/template/scrolling-nav-->
+    <section class="bg-light" id="site">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h2>Troc'asio: le site</h2>
                     <p class="lead">
 Le site Troc'asio facilite la gestion du stock de calculatrices, idéalement par les élèves eux-mêmes via la MDL (Maison des Lycéens): le projet relève en effet de l'Économie Sociale et Solidaire (<a class="link-dark" href="https://lesper.fr/mon-ess-a-lecole/">ESS</a>) et participe de l'Éducation au Développement Durable (<a class="link-dark" href="https://eduscol.education.fr/1117/education-au-developpement-durable#summary-item-1">EDD</a>). Quoiqu'il en soit, il est prévu de développer les fonctionnalités suivantes afin de simplifier, mutualiser et sécuriser la gestion actuelle par tableur:
                     </p>
