@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MaintenanceOperationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MaintenanceOperationRepository::class)]
 class MaintenanceOperation
@@ -17,6 +18,7 @@ class MaintenanceOperation
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $action = null;
 

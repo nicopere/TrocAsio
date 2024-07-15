@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Repository\AccountingEntryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AccountingEntryRepository::class)]
+#[UniqueEntity(['receiptNumber'])]
 class AccountingEntry
 {
     #[ORM\Id]
@@ -17,15 +20,18 @@ class AccountingEntry
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column]
     private ?float $amount = null;
 
     #[ORM\ManyToOne(inversedBy: 'accountingEntries')]
     private ?Calculator $calculator = null;
 
+    #[Assert\Positive]
     #[ORM\Column(nullable: true)]
     private ?int $receiptNumber = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
