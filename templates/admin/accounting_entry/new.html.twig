@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle transaction{% endblock %}
+{% set action = app.current_route == 'app_admin_accounting_entry_new' ? 'ajout' : 'édition' %}
+
+{% block title %}transaction - {{ action }}{% endblock %}
 
 {% block body %}
 <section class="container px-4">
     <div class="w-50 m-auto">
-        <h1>Nouvelle transaction</h1>
+        <h1>Transaction: {{ action }}</h1>
         {{ form_start(form) }}
         {{ form_row(form.date, {label: 'Date'}) }}
         {{ form_row(form.amount, {label: 'Montant'}) }}
         {{ form_row(form.calculator, {label: 'Calculatrice'}) }}
         {{ form_row(form.receiptNumber, {label: 'Numéro de reçu'}) }}
-        {{ form_row(form.name, {label: 'NOM Prénom'}) }}
+        {{ form_row(form.name, {label: 'Contact (NOM Prénom)'}) }}
         {{ form_row(form.furtherInformation, {label: 'Information complémentaire'}) }}
         <button type="submit" class="btn btn-primary">Envoyer</button>
         {{ form_end(form) }}

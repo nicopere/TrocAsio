@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Grand livre{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <h1>Écriture comptable : détails</h1>
+
+    {% if entry is not null %}
+        <div class="card mb-1 m-auto">
+            <div class="card-body">
+                <div class="card-title d-flex justify-content-between">
+                    <h4 class="mb-1">{{ entry.amount }} €</h4>
+                    <small class="text-muted">{{ entry.date|date('d M Y') }}</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Numéro de calculatrice :
+                        {{ entry.calculator is not null ?
+                        entry.calculator.id : '-' }}
+                    </li>
+                    <li class="list-group-item">Numéro de reçu :
+                        {{ entry.receiptNumber is not null ?
+                        entry.receiptNumber : '-' }}
+                    </li>
+                    <li class="list-group-item">Contact : {{ entry.name }}</li>
+                    <li class="list-group-item">Information complémentaire :
+                        {{ entry.furtherInformation is not null ?
+                        entry.furtherInformation : '-' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <div>Écriture non trouvée</div>
+    {% endif %}
+    <a href="{{ path('app_admin_accounting_entry_index') }}" class="btn btn-primary">Retour</a>
+    <a href="{{ path('app_admin_accounting_entry_edit', {id: entry.id}) }}" class="btn btn-warning">Éditer</a>
+</section>
+{% endblock %}

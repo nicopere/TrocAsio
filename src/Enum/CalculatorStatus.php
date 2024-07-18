@@ -11,9 +11,9 @@ enum CalculatorStatus: string
     public function getLabel(): string
     {
         return match ($this) {
-            self::In => 'Disponible',
-            self::Out => 'Vendue',
-            self::Removed => 'Retirée',
+            self::In => 'disponible',
+            self::Out => 'vendue',
+            self::Removed => 'retirée',
         };
     }
 }

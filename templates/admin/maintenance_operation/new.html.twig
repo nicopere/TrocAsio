@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Maintenance: ajout{% endblock %}
+{% set action = app.current_route == 'app_admin_maintenance_operation_new' ? 'ajout' : 'édition' %}
+
+{% block title %}maintenance - {{ action }}{% endblock %}
 
 {% block body %}
 <section class="container px-4">
     <div class="w-50 m-auto">
-        <h1>Maintenance: ajout</h1>
+        <h1>Maintenance: {{ action }}</h1>
         {{ form_start(form) }}
         {{ form_row(form.date, {label: 'Date'}) }}
-        {{ form_row(form.action, {label: 'Opération'}) }}
-        {{ form_row(form.calculator, {label: 'Calculatrice'}) }}
+        {{ form_row(form.action, {label: 'Action'}) }}
+        {{ form_row(form.calculator, {label: 'Calculatrice (numéro)'}) }}
         <button type="submit" class="btn btn-primary">Envoyer</button>
         {{ form_end(form) }}
     </div>

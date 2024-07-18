@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Calculator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,6 +15,18 @@ class CalculatorRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Calculator::class);
+    }
+
+    public function findByStatus(string $status = ''): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if (strlen($status) > 0) {
+            $qb->andWhere('c.status = :status')
+               ->setParameter('status', $status);
+        }
+
+        return $qb;
     }
 
     //    /**

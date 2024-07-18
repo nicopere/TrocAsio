@@ -1,15 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MaintenanceOperationController!{% endblock %}
+{% block title %}Maintenance{% endblock %}
 
 {% block body %}
 <section class="container px-4">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/nicolas/sources/trocasio/src/Controller/Admin/MaintenanceOperationController.php</code></li>
-        <li>Your template at <code>/home/nicolas/sources/trocasio/templates/admin/maintenance_operation/index.html.twig</code></li>
+    <h1>Opérations de maintenance</h1>
+    <ul class="list-group list-group-flush">
+        {% for operation in operations %}
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <a href="{{ path('app_admin_maintenance_operation_show', {id: operation.id}) }}" class="stretched-link link-dark">
+                            <h4 class="mb-1">{{ operation.action }}</h4>
+                        </a>
+                        <small class="text-muted">{{ operation.date|date('d M Y') }}</small>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <li>Aucun enregistrement en base de données.</li>
+        {% endfor %}
     </ul>
+    {{ pagerfanta(operations) }}
 </section>
 {% endblock %}

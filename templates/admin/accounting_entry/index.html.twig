@@ -1,15 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountingEntryController!{% endblock %}
+{% block title %}Grand livre{% endblock %}
 
 {% block body %}
 <section class="container px-4">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/nicolas/sources/trocasio/src/Controller/Admin/AccountingEntryController.php</code></li>
-        <li>Your template at <code>/home/nicolas/sources/trocasio/templates/admin/accounting_entry/index.html.twig</code></li>
+    <h1>Écritures comptables</h1>
+    <ul class="list-group list-group-flush">
+        {% for entry in entries %}
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <a href="{{ path('app_admin_accounting_entry_show', {id: entry.id}) }}" class="stretched-link link-dark">
+                            <h4 class="mb-1">{{ entry.amount }} €</h4>
+                        </a>
+                        <small class="text-muted">{{ entry.date|date('d M Y') }}</small>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <li>Aucun enregistrement en base de données.</li>
+        {% endfor %}
     </ul>
+    {{ pagerfanta(entries) }}
 </section>
 {% endblock %}

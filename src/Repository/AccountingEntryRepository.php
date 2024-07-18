@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\AccountingEntry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,6 +15,23 @@ class AccountingEntryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, AccountingEntry::class);
+    }
+
+    public function findByDate(array $dates = []): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        if (\array_key_exists('start', $dates)) {
+            $qb->andWhere('a.date >= :start')
+               ->setParameter('start', new \DateTimeImmutable($dates['start']));
+        }
+
+        if (\array_key_exists('end', $dates)) {
+            $qb->andWhere('a.date <= :end')
+               ->setParameter('end', new \DateTimeImmutable($dates['end']));
+        }
+
+        return $qb;
     }
 
     //    /**

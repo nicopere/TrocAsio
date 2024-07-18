@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <h1>Opération de maintenance : détails</h1>
+
+    {% if operation is not null %}
+        <div class="card mb-1 m-auto">
+            <div class="card-body">
+                <div class="card-title d-flex justify-content-between">
+                    <h4 class="mb-1">{{ operation.action }}</h4>
+                    <small class="text-muted">{{ operation.date|date('d M Y') }}</small>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Calculatrice : <a href="
+                        {{ path('app_admin_calculator_show', {id: operation.calculator.id}) }}">
+                        {{ operation.calculator.model }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <div>Opération non trouvée</div>
+    {% endif %}
+    <a href="{{ path('app_admin_maintenance_operation_index') }}" class="btn btn-primary">Retour</a>
+    <a href="{{ path('app_admin_maintenance_operation_edit', {id: operation.id}) }}" class="btn btn-warning">Éditer</a>
+</section>
+{% endblock %}
