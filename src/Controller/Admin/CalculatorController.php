@@ -25,7 +25,7 @@ class CalculatorController extends AbstractController
         }
 
         $calculators = Pagerfanta::createForCurrentPageWithMaxPerPage(
-            new QueryAdapter($repository->findByStatus()),
+            new QueryAdapter($repository->findByStatus($status)),
             $request->query->get('page', 1),
             10
         );

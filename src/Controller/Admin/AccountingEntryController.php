@@ -28,7 +28,7 @@ class AccountingEntryController extends AbstractController
         }
 
         $entries = Pagerfanta::createForCurrentPageWithMaxPerPage(
-            new QueryAdapter($repository->findByDate()),
+            new QueryAdapter($repository->findByDate($dates)),
             $request->query->get('page', 1),
             10
         );

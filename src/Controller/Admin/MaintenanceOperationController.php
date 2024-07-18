@@ -28,7 +28,7 @@ class MaintenanceOperationController extends AbstractController
         }
 
         $operations = Pagerfanta::createForCurrentPageWithMaxPerPage(
-            new QueryAdapter($repository->findByDate()),
+            new QueryAdapter($repository->findByDate($dates)),
             $request->query->get('page', 1),
             10
         );
