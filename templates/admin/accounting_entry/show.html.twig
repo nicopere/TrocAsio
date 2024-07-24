@@ -14,9 +14,11 @@
                     <small class="text-muted">{{ entry.date|date('d M Y') }}</small>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Numéro de calculatrice :
-                        {{ entry.calculator is not null ?
-                        entry.calculator.id : '-' }}
+                    <li class="list-group-item">Calculatrice :
+                        {% if entry.calculator is null %} - {% else %} <a href="
+                        {{ path('app_admin_calculator_show', {id: entry.calculator.id}) }}
+                        ">{{ entry.calculator.model }}</a>
+                        {% endif %}
                     </li>
                     <li class="list-group-item">Numéro de reçu :
                         {{ entry.receiptNumber is not null ?

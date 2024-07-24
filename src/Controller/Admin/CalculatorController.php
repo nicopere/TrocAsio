@@ -52,8 +52,11 @@ class CalculatorController extends AbstractController
             ]);
         }
 
+        $repository = $manager->GetRepository(Calculator::class);
+        $nextId = $repository->nextId();
         return $this->render('admin/calculator/new.html.twig', [
             'form' => $form,
+            'nextId' => $nextId,
         ]);
     }
 

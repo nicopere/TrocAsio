@@ -7,6 +7,12 @@
 {% block body %}
 <section class="container px-4">
     <div class="w-50 m-auto">
+        {% if (app.current_route == 'app_admin_calculator_new') %}
+        <div class="alert alert-primary">
+            Marquer <strong>#{{ '%03d'|format(nextId) }}</strong>
+            dans le compartiment piles de cette calculatrice.
+        </div>
+        {% endif %}
         <h1>Calculatrice: {{ action }}</h1>
         {{ form_start(form) }}
         {{ form_row(form.model, {label: 'MARQUE Modèle'}) }}

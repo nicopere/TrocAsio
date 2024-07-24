@@ -29,6 +29,16 @@ class CalculatorRepository extends ServiceEntityRepository
         return $qb;
     }
 
+    public function nextId(): int {
+        $lastCalculator = $this->createQueryBuilder('c')
+                               ->orderBy('c.id', 'DESC')
+                               ->SetMaxResults(1)
+                               ->getQuery()
+                               ->getOneOrNullResult();
+        $currentId = $lastCalculator ? $lastCalculator->getId() : 0;
+        return $currentId + 1;
+    }
+
     //    /**
     //     * @return Calculator[] Returns an array of Calculator objects
     //     */
