@@ -4,6 +4,9 @@
 
 {% block body %}
 <section class="container px-4">
+    <div class="alert alert-primary">
+        Solde de la cagnotte: <strong>{{ balance }} €</strong>.
+    </div>
     <h1>Écritures comptables</h1>
     <ul class="list-group list-group-flush">
         {% for entry in entries %}

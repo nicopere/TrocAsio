@@ -35,6 +35,7 @@ class AccountingEntryController extends AbstractController
 
         return $this->render('admin/accounting_entry/index.html.twig', [
             'entries' => $entries,
+            'balance' => $repository->balance(),
         ]);
     }
 

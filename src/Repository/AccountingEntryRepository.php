@@ -34,6 +34,13 @@ class AccountingEntryRepository extends ServiceEntityRepository
         return $qb;
     }
 
+    public function balance(): float {
+        return $this->createQueryBuilder('e')
+                    ->select('sum(e.amount)')
+                    ->getQuery()
+                    ->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return AccountingEntry[] Returns an array of AccountingEntry objects
     //     */
