@@ -10,9 +10,9 @@
         <h1>Transaction: {{ action }}</h1>
         {{ form_start(form) }}
         {{ form_row(form.date, {label: 'Date'}) }}
-        {{ form_row(form.amount, {label: 'Montant'}) }}
-        {{ form_row(form.calculator, {label: 'Calculatrice'}) }}
-        {{ form_row(form.receiptNumber, {label: 'Numéro de reçu'}) }}
+        {{ form_row(form.amount, {label: 'Montant (positif si l\'argent entre dans la cagnotte, négatif s\'il en sort)'}) }}
+        {{ form_row(form.calculator, {label: 'Calculatrice (le cas échéant)'}) }}
+        {{ form_row(form.receiptNumber, {label: 'Numéro de reçu (si une calculatrice est impliquée)'}) }}
         {{ form_row(form.name, {label: 'Contact (NOM Prénom)'}) }}
         {{ form_row(form.furtherInformation, {label: 'Information complémentaire'}) }}
         <button type="submit" class="btn btn-primary">Envoyer</button>

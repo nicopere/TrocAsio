@@ -18,14 +18,12 @@
                         {{ calculator.note is not null ?
                         calculator.note : '-' }}
                     </li>
-                    <li class="list-group-item">Statut : {{ calculator.status.getLabel() }}</li>
                 </ul>
             </div>
         </div>
     {% else %}
         <div>Écriture non trouvée</div>
     {% endif %}
-    <a href="{{ path('app_admin_calculator_index') }}" class="btn btn-primary">Retour</a>
-    <a href="{{ path('app_admin_calculator_edit', {id: calculator.id}) }}" class="btn btn-warning">Éditer</a>
+    <a href="{{ path('app_calculator_index') }}" class="btn btn-primary">Retour</a>
 </section>
 {% endblock %}

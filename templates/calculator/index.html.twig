@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculatrices disponibles{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <h1>Calculatrices disponibles</h1>
+    <ul class="list-group list-group-flush">
+        {% for calculator in calculators %}
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <a href="{{ path('app_calculator_show', {id: calculator.id}) }}" class="stretched-link link-dark">
+                            <h4 class="mb-1">{{ calculator.model }}</h4>
+                        </a>
+                        <small class="text-muted">Numéro : {{ calculator.id }}</small>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <li>Aucun enregistrement en base de données.</li>
+        {% endfor %}
+    </ul>
+    {{ pagerfanta(calculators) }}
+</section>
+{% endblock %}

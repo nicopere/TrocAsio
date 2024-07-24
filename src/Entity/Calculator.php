@@ -21,6 +21,10 @@ class Calculator
     #[ORM\Column(length: 255)]
     private ?string $model = null;
 
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Ce texte ne peut dépasser {{ limit }} caractères.',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $note = null;
 

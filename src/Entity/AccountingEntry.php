@@ -35,6 +35,10 @@ class AccountingEntry
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Ce texte ne peut dépasser {{ limit }} caractères.',
+    )]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $furtherInformation = null;
 
