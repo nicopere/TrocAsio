@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration: accueil{% endblock %}
+
+{% block body %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Troc'asio</h1>
+            <p class="lead">Administration</p>
+        </div>
+    </header>
+    <section>
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <ul class="nav justify-content-evenly">
+                        <li class="nav-item ">
+                            <h4>Calculatrices</h4>
+                            <div class="fs-5">
+                                <a href="{{ path('app_admin_calculator_index') }}">
+                                    <button class="btn btn-outline-primary">Liste</button></a>
+                                <a href="{{ path('app_admin_calculator_new') }}">
+                                    <button class="btn btn-outline-primary">Ajout</button></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <h4>Comptabilité</h4>
+                            <div class="fs-5">
+                                <a href="{{ path('app_admin_accounting_entry_index') }}">
+                                    <button class="btn btn-outline-primary">Liste</button></a>
+                                <a href="{{ path('app_admin_accounting_entry_new') }}">
+                                    <button class="btn btn-outline-primary">Ajout</button></a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <h4>Maintenance</h4>
+                            <div class="fs-5">
+                                <a href="{{ path('app_admin_maintenance_operation_index') }}">
+                                    <button class="btn btn-outline-primary">Liste</button></a>
+                                <a href="{{ path('app_admin_maintenance_operation_new') }}">
+                                    <button class="btn btn-outline-primary">Ajout</button></a>
+                            </div>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <h4>Utilisateurs</h4>
+                            <div class="fs-5">
+                                <a href="{{ path('app_user_index') }}">
+                                    <button class="btn btn-outline-primary">Liste</button></a>
+                                <a href="{{ path('app_user_new') }}">
+                                    <button class="btn btn-outline-primary">Ajout</button></a>
+                            </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
