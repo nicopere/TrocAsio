@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<section class="container px-4">
+    <h1>Utilisateurs</h1>
+    <ul class="list-group list-group-flush">
+        {% for user in users %}
+            <div class="card mb-1">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <a href="{{ path('app_user_edit', {id: user.id}) }}" class="stretched-link link-dark">
+                            <h4 class="mb-1">{{ user.username }}</h4>
+                        </a>
+                        <small class="text-muted">Id : {{ user.id }}</small>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <li>Aucun enregistrement en base de données.</li>
+        {% endfor %}
+    </ul>
+    {{ pagerfanta(users) }}
+</section>
+{% endblock %}

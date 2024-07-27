@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% set action = app.current_route == 'app_user_new' ? 'ajout' : 'édition' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-5">
+                    <h2>Utilisateur: {{ action }}</h2>
+
+                    {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.username, {label: 'Nom d\'utilisateur'}) }}
+                    {{ form_row(registrationForm.roles, {label: 'Rôles'}) }}
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Mot de passe'
+                    }) }}
+
+                    <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
