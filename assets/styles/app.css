@@ -1,3 +1,9 @@
 body {
     background-color: white;
 }
+
+@media all and (max-width: 640px) {
+    #logo {
+        display: none;
+    }
+}
