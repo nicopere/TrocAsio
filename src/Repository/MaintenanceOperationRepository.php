@@ -31,6 +31,8 @@ class MaintenanceOperationRepository extends ServiceEntityRepository
                ->setParameter('end', new \DateTimeImmutable($dates['end']));
         }
 
+        $qb->orderBy('m.date', 'DESC');
+
         return $qb;
     }
 

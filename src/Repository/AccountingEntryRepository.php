@@ -31,6 +31,8 @@ class AccountingEntryRepository extends ServiceEntityRepository
                ->setParameter('end', new \DateTimeImmutable($dates['end']));
         }
 
+        $qb->orderBy('a.date', 'DESC');
+
         return $qb;
     }
 
