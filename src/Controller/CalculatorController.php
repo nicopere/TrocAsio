@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Calculator;
+use App\Enum\CalculatorStatus;
 use App\Repository\CalculatorRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -25,6 +26,9 @@ class CalculatorController extends AbstractController
 
         return $this->render('calculator/index.html.twig', [
             'calculators' => $calculators,
+            'count' => $repository->count([
+                'status' => CalculatorStatus::In,
+            ])
         ]);
     }
 

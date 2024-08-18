@@ -4,7 +4,7 @@
 
 {% block body %}
 <section class="container px-4">
-    <h1>Calculatrices disponibles</h1>
+    <h1>Calculatrices disponibles ({{ count }})</h1>
     <ul class="list-group list-group-flush">
         {% for calculator in calculators %}
             <div class="card mb-1">
