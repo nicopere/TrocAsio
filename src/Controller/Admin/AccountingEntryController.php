@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\AccountingEntry;
+use App\Enum\CalculatorStatus;
 use App\Form\AccountingEntryType;
 use App\Repository\AccountingEntryRepository;
 use App\Repository\CalculatorRepository;
@@ -59,6 +60,11 @@ class AccountingEntryController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($entry);
+            if (null !== $entry->getCalculator() && $entry->getAmount() > 0) {
+                $calculator_id = $entry->getCalculator()->getId();
+                $calculator=$repository->find($calculator_id)->setStatus(CalculatorStatus::Out);
+                $manager->persist($calculator);
+            }
             $manager->flush();
 
             return $this->redirectToRoute('app_admin_accounting_entry_show', [
