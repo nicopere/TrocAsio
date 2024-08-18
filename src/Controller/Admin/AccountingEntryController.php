@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\AccountingEntry;
 use App\Form\AccountingEntryType;
 use App\Repository\AccountingEntryRepository;
+use App\Repository\CalculatorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -41,10 +42,19 @@ class AccountingEntryController extends AbstractController
 
     #[Route('/new', name: 'app_admin_accounting_entry_new', methods: ['GET', 'POST'])]
     #[Route('/{id}/edit', name: 'app_admin_accounting_entry_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
-    public function new(?AccountingEntry $entry, Request $request, EntityManagerInterface $manager): Response
+    public function new(?AccountingEntry $entry, Request $request, EntityManagerInterface $manager, CalculatorRepository $repository): Response
     {
-        $entry ??= new AccountingEntry();
-        $form = $this->createForm(AccountingEntryType::class, $entry);
+        //$entry ??= new AccountingEntry();
+        if ($entry == null) { // new
+            $entry ??= new AccountingEntry();
+            $qb = $repository->findByStatus('in');
+        } else {              // edit
+            $qb = $repository->findByStatus('');
+        }
+        $calculators=$qb->getQuery()->getResult();
+        $form = $this->createForm(AccountingEntryType::class, $entry, [
+            'calculators' => $calculators,
+        ]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -25,6 +25,7 @@ class AccountingEntryType extends AbstractType
             ->add('amount', MoneyType::class)
             ->add('calculator', EntityType::class, [
                 'class' => Calculator::class,
+                'choices' => $options['calculators'],
                 'choice_label' => 'id',
                 'required' => false,
             ])
@@ -42,6 +43,7 @@ class AccountingEntryType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => AccountingEntry::class,
+            'calculators' => [],
         ]);
     }
 }
