@@ -32,11 +32,11 @@ class CalculatorController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_calculator_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+  /*#[Route('/{id}', name: 'app_calculator_show', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(?Calculator $calculator): Response
     {
         return $this->render('calculator/show.html.twig', [
             'calculator' => $calculator,
         ]);
-    }
+    }*/
 }
