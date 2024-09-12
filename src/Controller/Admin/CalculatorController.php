@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Calculator;
+use App\Enum\CalculatorStatus;
 use App\Form\CalculatorType;
 use App\Repository\CalculatorRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,12 +41,27 @@ class CalculatorController extends AbstractController
     public function new(?Calculator $calculator, Request $request, EntityManagerInterface $manager): Response
     {
         $calculator ??= new Calculator();
+        $old_status = $calculator->getStatus();
         $form = $this->createForm(CalculatorType::class, $calculator);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($calculator);
             $manager->flush();
+
+            $new_status = $calculator->getStatus();
+            if ($old_status == CalculatorStatus::In
+             && $new_status == CalculatorStatus::Out) {
+                $this->addFlash('warning', "
+                    Le statut de la calculatrice vient de passer à 'vendue'.
+                ");
+                $this->addFlash('info', "
+                    S'il s'agit d'une vente, il faut repasser à 'disponible'
+                    et saisir directement la transaction (le statut de la calculatrice
+                    sera changé automatiquement).
+                ");
+
+            }
 
             return $this->redirectToRoute('app_admin_calculator_show', [
                 'id' => $calculator->getId(),

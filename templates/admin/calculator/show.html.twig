@@ -5,7 +5,13 @@
 {% block body %}
 <section class="container px-4">
     <h1>Calculatrice : détails</h1>
-
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     {% if calculator is not null %}
         <div class="card mb-1 m-auto">
             <div class="card-body">
